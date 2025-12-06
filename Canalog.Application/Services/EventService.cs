@@ -1,6 +1,7 @@
 ﻿using Canalog.Application.Dtos;
 using Canalog.Application.Interfaces;
 using Canalog.Application.Mappers;
+using Canalog.Domain;
 
 namespace Canalog.Application.Services;
 
@@ -19,17 +20,17 @@ public class EventService(IEventRepository eventRepo, IOptionsService optService
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<EventResponseDto>> GetTodaysEventAsync(Guid userId)
+    public async Task<IEnumerable<EventResponseDto>> GetTodaysEventAsync(User user)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<EventResponseDto>> GetWeekEventAsync(Guid userId)
+    public Task<IEnumerable<EventResponseDto>> GetWeekEventAsync(User user)
     {
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(Guid id)
+    public Task UpdateAsync(Guid id, EventRequestDto dto)
     {
         throw new NotImplementedException();
     }

@@ -1,11 +1,16 @@
-﻿using Canalog.Domain;
+﻿using Canalog.Application.Interfaces;
+using Canalog.Domain;
 
 namespace Canalog.Application;
 
-public class UserService
+public class UserService(IUserRepository userRepo)
 {
+    private readonly IUserRepository _userRepo = userRepo;
     public async Task<User?> FindByIdAsync(string userId)
     {
-        throw new NotImplementedException();
+        var user = await _userRepo
+            .GetUserByIdAsync(userId);
+
+        return user;
     }
 }
