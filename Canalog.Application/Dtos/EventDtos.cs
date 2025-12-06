@@ -1,3 +1,5 @@
+using Canalog.Domain.Models;
+
 namespace Canalog.Application.Dtos;
 
 public record EventRequestDto(
@@ -10,7 +12,7 @@ public record EventRequestDto(
 public record EventResponseDto(
     Guid Id,
     string Title,
-    int Hour,
-    int Minutes,
+    DateTime Start,
+    DateTime End,
     string Color
 );
