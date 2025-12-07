@@ -10,18 +10,8 @@ namespace Canalog.Application.Mappers;
 
 public static class Mapper
 {
-    public static EventResponseDto MapToDto(this Event e, ColorScheme colors)
+    public static EventResponseDto MapToDto(this Event e)
     {
-        var color = e.Color switch
-        {
-            EventColor.Red => colors.Red,
-            EventColor.Blue => colors.Blue,
-            EventColor.Green => colors.Green,
-            EventColor.Purple => colors.Purple,
-            EventColor.Yellow => colors.Yellow,
-            _ => colors.Red,
-        };
-
-        return new EventResponseDto(e.Id, e.Title, e.Start, e.End, color);
+        return new EventResponseDto(e.Id, e.Title, e.Start, e.End, e.Color);
     }
 }

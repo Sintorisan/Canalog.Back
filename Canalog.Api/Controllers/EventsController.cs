@@ -26,29 +26,32 @@ public class EventsController : ControllerBase
     {
         var user = await GetUserAsync();
         if (user is null)
+        {
             return Unauthorized("User not found or not authenticated.");
+        }
 
         var events = await _eventService.GetTodaysEventAsync(user);
         return Ok(events);
     }
 
     [HttpGet("week")]
-    public async Task<IActionResult> GetWeekEvents()
+    public async Task<IActionResult> GetWeekEvents([FromQuery] DateTime? start)
     {
         var user = await GetUserAsync();
         if (user is null)
+        {
             return Unauthorized("User not found or not authenticated.");
+        }
 
-        var events = await _eventService.GetWeekEventAsync(user);
+        var startDate = start?.Date ?? DateTime.Today;
+        var events = await _eventService.GetWeekEventAsync(user, startDate);
+
         return Ok(events);
     }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] EventRequestDto request)
     {
-        if (request is null)
-            return BadRequest("Invalid request payload.");
-
         try
         {
             var createdEvent = await _eventService.CreateAsync(request);
@@ -64,23 +67,17 @@ public class EventsController : ControllerBase
         }
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(string id, [FromBody] EventRequestDto request)
+    [HttpPut]
+    public async Task<IActionResult> Update(UpdateEventRequestDto request)
     {
-        if (!Guid.TryParse(id, out var guid))
-            return BadRequest("Invalid event id.");
-
-        if (request is null)
-            return BadRequest("Invalid request payload.");
-
         try
         {
-            await _eventService.UpdateAsync(guid, request);
+            await _eventService.UpdateAsync(request);
             return NoContent();
         }
         catch (KeyNotFoundException)
         {
-            return NotFound($"Event with id '{id}' was not found.");
+            return NotFound($"Event with id '{request.EventId}' was not found.");
         }
         catch (ArgumentException ex)
         {

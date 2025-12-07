@@ -6,8 +6,8 @@ namespace Canalog.Application.Interfaces;
 public interface IEventService
 {
     Task<IEnumerable<EventResponseDto>> GetTodaysEventAsync(User user);
-    Task<IEnumerable<EventResponseDto>> GetWeekEventAsync(User user);
-    Task<EventResponseDto> CreateAsync(EventRequestDto request);
-    Task UpdateAsync(Guid eventId, EventRequestDto dto);
+    Task<IEnumerable<EventResponseDto>> GetWeekEventAsync(User user, DateTime start);
+    Task<EventResponseDto> CreateAsync(EventRequestDto request, User user);
+    Task UpdateAsync(UpdateEventRequestDto dto);
     Task DeleteAsync(Guid eventId);
 }

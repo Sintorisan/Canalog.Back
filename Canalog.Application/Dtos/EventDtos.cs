@@ -1,10 +1,19 @@
+using Canalog.Domain.Enums;
 using Canalog.Domain.Models;
 
 namespace Canalog.Application.Dtos;
 
 public record EventRequestDto(
     string Title,
-    string Color,
+    EventColor Color,
+    DateTime Start,
+    DateTime End
+);
+
+public record UpdateEventRequestDto(
+    Guid EventId,
+    string Title,
+    EventColor Color,
     DateTime Start,
     DateTime End
 );
@@ -14,5 +23,5 @@ public record EventResponseDto(
     string Title,
     DateTime Start,
     DateTime End,
-    string Color
+    EventColor Color
 );

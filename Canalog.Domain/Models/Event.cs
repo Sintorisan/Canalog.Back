@@ -10,6 +10,6 @@ public class Event
     public DateTime End { get; set; }
     public EventColor Color { get; set; }
 
-    public required User User { get; set; }
-    public Guid UserId { get; set; }
+    public User? User { get; set; }
+    public string UserId { get; set; } = string.Empty;
 }

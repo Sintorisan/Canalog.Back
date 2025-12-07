@@ -5,5 +5,9 @@ namespace Canalog.Application.Interfaces;
 
 public interface IEventRepository
 {
-    Task<IEnumerable<Event>> GetEventsFromSpanAsync(DateTime date);
+    Task AddAsync(Event newEvent);
+    Task DeleteAsync(object entity);
+    Task<Event> GetEventById(Guid eventId);
+    Task<IEnumerable<Event>> GetEventsRangeAsync(string userId, DateTime start, DateTime end);
+    Task UpdateAsync(object entity);
 }
