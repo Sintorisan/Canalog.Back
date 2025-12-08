@@ -3,15 +3,29 @@ using Canalog.Application.Interfaces;
 using Canalog.Application.Services;
 using Canalog.Infrastructure;
 using Canalog.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-
+var auth0Domain = builder.Configuration["Auth0:Domain"];
+var auth0Audience = builder.Configuration["Auth0:Audience"];
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddOpenApi();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.Authority = $"https://{auth0Domain}/";
+    options.Audience = auth0Audience;
+});
+builder.Services.AddAuthorization();
+
+builder.Services.AddControllers();
 builder.Services.AddDbContext<EventDbContext>(opt => opt.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IEventService, EventService>();
@@ -30,6 +44,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.MapScalarApiReference();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 app.UseHttpsRedirection();

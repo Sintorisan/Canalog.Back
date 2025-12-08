@@ -1,12 +1,13 @@
-using Canalog.Application;
 using Canalog.Application.Dtos;
 using Canalog.Application.Interfaces;
 using Canalog.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Canalog.Api.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class EventsController : ControllerBase
@@ -27,7 +28,7 @@ public class EventsController : ControllerBase
         var user = await GetUserAsync();
         if (user is null)
         {
-            return Unauthorized("User not found or not authenticated.");
+            return Unauthorized("User not found");
         }
 
         var events = await _eventService.GetTodayAsync(user);
@@ -40,7 +41,7 @@ public class EventsController : ControllerBase
         var user = await GetUserAsync();
         if (user is null)
         {
-            return Unauthorized("User not found or not authenticated.");
+            return Unauthorized("User not found");
         }
 
         var startDate = start?.Date ?? DateTime.Today;
@@ -55,7 +56,7 @@ public class EventsController : ControllerBase
         var user = await GetUserAsync();
         if (user is null)
         {
-            return Unauthorized("User not found or not authenticated.");
+            return Unauthorized("User not found");
         }
 
         try
