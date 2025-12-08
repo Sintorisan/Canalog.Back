@@ -1,16 +1,14 @@
-using Canalog.Application;
 using Canalog.Application.Dtos;
-using Canalog.Domain;
-using Microsoft.AspNetCore.Http;
+using Canalog.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Canalog.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UsersController(UserService userService) : ControllerBase
+public class UsersController(IUserService userService) : ControllerBase
 {
-    private readonly UserService _userService = userService;
+    private readonly IUserService _userService = userService;
 
 
     [HttpGet("sync")]

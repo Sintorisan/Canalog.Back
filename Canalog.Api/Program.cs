@@ -1,3 +1,4 @@
+using Canalog.Application;
 using Canalog.Application.Interfaces;
 using Canalog.Application.Services;
 using Canalog.Infrastructure;
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IAiService, AiService>();
 builder.Services.AddScoped<IOptionsService, OptionsService>();
 builder.Services.AddScoped<IOptionsRepository, OptionsRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

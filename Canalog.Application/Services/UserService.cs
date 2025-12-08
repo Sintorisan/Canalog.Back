@@ -5,7 +5,7 @@ using Canalog.Domain.Enums;
 
 namespace Canalog.Application;
 
-public class UserService(IUserRepository userRepo, IOptionsRepository optRepo)
+public class UserService(IUserRepository userRepo, IOptionsRepository optRepo) : IUserService
 {
     private readonly IUserRepository _userRepo = userRepo;
     private readonly IOptionsRepository _optRepo = optRepo;
