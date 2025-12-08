@@ -8,12 +8,12 @@ public class OptionsService(IOptionsRepository optRepo) : IOptionsService
 {
     private readonly IOptionsRepository _optRepo = optRepo;
 
-    public Task<ColorScheme> GetColorSchemeAsync()
+    public Task<EventColorScheme> GetColorSchemeAsync()
     {
         throw new NotImplementedException();
     }
 
-    public Task<OptionsDto> GetUserOptionsAsync()
+    public Task<OptionsResponseDto> GetUserOptionsAsync()
     {
         throw new NotImplementedException();
     }

@@ -13,8 +13,8 @@ public class UsersController(UserService userService) : ControllerBase
     private readonly UserService _userService = userService;
 
 
-    [HttpGet]
-    public async Task<ActionResult<UserResponseDto>> Sync()
+    [HttpGet("sync")]
+    public async Task<ActionResult<OptionsResponseDto>> Sync()
     {
         var userId = User.FindFirst("sub")?.Value;
         if (string.IsNullOrEmpty(userId))
@@ -28,7 +28,7 @@ public class UsersController(UserService userService) : ControllerBase
             user = await _userService.CreateAsync(userId);
         }
 
-        var response = await _userService.MapResponseAsync(user);
+        var response = _userService.MapResponse(user);
 
         return Ok(response);
     }

@@ -5,7 +5,7 @@ namespace Canalog.Application.Interfaces;
 
 public interface IOptionsService
 {
-    Task<OptionsDto> GetUserOptionsAsync();
-    Task<ColorScheme> GetColorSchemeAsync();
+    Task<OptionsResponseDto> GetUserOptionsAsync();
+    Task<EventColorScheme> GetColorSchemeAsync();
     Task UpdateAsync();
 }

@@ -1,6 +1,6 @@
 namespace Canalog.Domain.Models;
 
-public class ColorScheme
+public class EventColorScheme
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Red { get; set; } = string.Empty;

@@ -8,6 +8,7 @@ public class EventRepository(AppContext context) : IEventRepository
 {
     private readonly AppContext _context = context;
 
+
     public async Task AddAsync(Event newEvent)
     {
         await _context.Events.AddAsync(newEvent);
