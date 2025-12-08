@@ -12,10 +12,10 @@ namespace Canalog.Api.Controllers;
 public class EventsController : ControllerBase
 {
     private readonly IEventService _eventService;
-    private readonly UserService _userService;
+    private readonly IUserService _userService;
 
 
-    public EventsController(IEventService eventService, UserService userService)
+    public EventsController(IEventService eventService, IUserService userService)
     {
         _eventService = eventService;
         _userService = userService;
@@ -69,7 +69,7 @@ public class EventsController : ControllerBase
         }
         catch (DbUpdateException)
         {
-            return StatusCode(500, "Failed to save event to the database.");
+            return BadRequest("Failed to save event to the database.");
         }
     }
 

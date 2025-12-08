@@ -4,11 +4,11 @@ using Canalog.Application.Services;
 using Canalog.Infrastructure;
 using Canalog.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -28,8 +28,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
+app.MapControllers();
 app.UseHttpsRedirection();
 
 
