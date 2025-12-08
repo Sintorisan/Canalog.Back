@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Canalog.Infrastructure.Repositories;
 
-public class UserRepository(AppContext context) : IUserRepository
+public class UserRepository(EventDbContext context) : IUserRepository
 {
-    private readonly AppContext _context = context;
+    private readonly EventDbContext _context = context;
 
 
     public async Task AddAsync(User user)

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Canalog.Infrastructure.Repositories;
 
-public class EventRepository(AppContext context) : IEventRepository
+public class EventRepository(EventDbContext context) : IEventRepository
 {
-    private readonly AppContext _context = context;
+    private readonly EventDbContext _context = context;
 
 
     public async Task AddAsync(Event newEvent)

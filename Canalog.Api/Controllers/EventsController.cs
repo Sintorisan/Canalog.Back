@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Canalog.Application;
 using Canalog.Application.Dtos;
 using Canalog.Application.Interfaces;

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Canalog.Infrastructure.Repositories;
 
-public class OptionsRepository(AppContext context) : IOptionsRepository
+public class OptionsRepository(EventDbContext context) : IOptionsRepository
 {
-    private readonly AppContext _context = context;
+    private readonly EventDbContext _context = context;
 
 
     public async Task<Theme?> GetDefaultTheme()
