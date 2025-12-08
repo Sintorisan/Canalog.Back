@@ -20,7 +20,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-    options.Authority = $"https://{auth0Domain}/";
+    options.Authority = $"https://{auth0Domain}";
     options.Audience = auth0Audience;
 });
 builder.Services.AddAuthorization();
