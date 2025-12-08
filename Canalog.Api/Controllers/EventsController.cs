@@ -52,9 +52,15 @@ public class EventsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] EventRequestDto request)
     {
+        var user = await GetUserAsync();
+        if (user is null)
+        {
+            return Unauthorized("User not found or not authenticated.");
+        }
+
         try
         {
-            var createdEvent = await _eventService.CreateAsync(request);
+            var createdEvent = await _eventService.CreateAsync(request, user);
             return Ok(createdEvent);
         }
         catch (ArgumentException ex)
