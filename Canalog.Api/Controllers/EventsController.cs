@@ -22,7 +22,7 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet("today")]
-    public async Task<IActionResult> GetTodayEvents()
+    public async Task<IActionResult> GetToday()
     {
         var user = await GetUserAsync();
         if (user is null)
@@ -30,12 +30,12 @@ public class EventsController : ControllerBase
             return Unauthorized("User not found or not authenticated.");
         }
 
-        var events = await _eventService.GetTodaysEventAsync(user);
+        var events = await _eventService.GetTodayAsync(user);
         return Ok(events);
     }
 
     [HttpGet("week")]
-    public async Task<IActionResult> GetWeekEvents([FromQuery] DateTime? start)
+    public async Task<IActionResult> GetRange([FromQuery] DateTime? start)
     {
         var user = await GetUserAsync();
         if (user is null)
@@ -44,7 +44,7 @@ public class EventsController : ControllerBase
         }
 
         var startDate = start?.Date ?? DateTime.Today;
-        var events = await _eventService.GetWeekEventAsync(user, startDate);
+        var events = await _eventService.GetRangeAsync(user, startDate);
 
         return Ok(events);
     }

@@ -11,6 +11,7 @@ public class UserRepository(AppContext context) : IUserRepository
     public async Task<User?> GetUserByIdAsync(string userId)
     {
         return await _context.Users
+            .Include(u => u.Options)
             .SingleOrDefaultAsync(u => u.Id == userId);
     }
 }

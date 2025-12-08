@@ -10,7 +10,7 @@ public class EventService(IEventRepository eventRepo) : IEventService
 {
     private readonly IEventRepository _eventRepo = eventRepo;
 
-    public async Task<IEnumerable<EventResponseDto>> GetTodaysEventAsync(User user)
+    public async Task<IEnumerable<EventResponseDto>> GetTodayAsync(User user)
     {
         var start = DateTime.Today;
         var end = start.AddDays(1);
@@ -19,7 +19,7 @@ public class EventService(IEventRepository eventRepo) : IEventService
         return events.Select(e => e.MapToDto());
     }
 
-    public async Task<IEnumerable<EventResponseDto>> GetWeekEventAsync(User user, DateTime start)
+    public async Task<IEnumerable<EventResponseDto>> GetRangeAsync(User user, DateTime start)
     {
         var end = start.AddDays(7);
 
@@ -47,7 +47,7 @@ public class EventService(IEventRepository eventRepo) : IEventService
         var entity = await _eventRepo.GetEventById(eventId);
         if (entity == null)
         {
-            throw new KeyNotFoundException("Event not found.");
+            throw new KeyNotFoundException();
         }
 
         await _eventRepo.DeleteAsync(entity);
@@ -58,7 +58,7 @@ public class EventService(IEventRepository eventRepo) : IEventService
         var entity = await _eventRepo.GetEventById(dto.EventId);
         if (entity == null)
         {
-            throw new KeyNotFoundException("Event not found.");
+            throw new KeyNotFoundException();
         }
 
         entity.Title = dto.Title;
