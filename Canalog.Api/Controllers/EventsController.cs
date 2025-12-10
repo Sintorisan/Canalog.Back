@@ -42,7 +42,7 @@ public class EventsController : ControllerBase
         var user = await GetUserAsync();
         if (user is null)
         {
-            return Unauthorized("User not found");
+            return NotFound("User not found");
         }
 
         var startDate = start?.Date ?? DateTime.Today;
@@ -57,7 +57,7 @@ public class EventsController : ControllerBase
         var user = await GetUserAsync();
         if (user is null)
         {
-            return Unauthorized("User not found");
+            return NotFound("User not found");
         }
 
         try
