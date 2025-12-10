@@ -1,3 +1,5 @@
+using System.IdentityModel.Tokens.Jwt;
+using Auth0.AspNetCore.Authentication.Api;
 using Canalog.Application;
 using Canalog.Application.Interfaces;
 using Canalog.Application.Services;
@@ -9,19 +11,32 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
 var auth0Domain = builder.Configuration["Auth0:Domain"];
 var auth0Audience = builder.Configuration["Auth0:Audience"];
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddOpenApi();
-builder.Services.AddAuthentication(options =>
+
+builder.Services.AddCors(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
+builder.Services.AddAuth0ApiAuthentication(options =>
 {
-    options.Authority = $"https://{auth0Domain}";
-    options.Audience = auth0Audience;
+    options.Domain = auth0Domain;
+    options.JwtBearerOptions = new JwtBearerOptions
+    {
+        Audience = auth0Audience
+    };
 });
 builder.Services.AddAuthorization();
 
@@ -46,6 +61,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthentication();
+app.UseCors("AllowAll");
 app.UseAuthorization();
 
 app.MapControllers();

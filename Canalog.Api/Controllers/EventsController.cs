@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Canalog.Application.Dtos;
 using Canalog.Application.Interfaces;
 using Canalog.Domain;
@@ -119,7 +120,7 @@ public class EventsController : ControllerBase
 
     private async Task<User?> GetUserAsync()
     {
-        var userId = User.FindFirst("sub")?.Value;
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (string.IsNullOrEmpty(userId))
             return null;
 
