@@ -23,32 +23,31 @@ public class EventsController : ControllerBase
         _userService = userService;
     }
 
-    [HttpGet("today")]
-    public async Task<IActionResult> GetToday()
+    [HttpGet("day")]
+    public async Task<IActionResult> GetDay([FromQuery] DateTime? date)
     {
         var user = await GetUserAsync();
         if (user is null)
         {
             return Unauthorized("User not found");
         }
-
-        var events = await _eventService.GetTodayAsync(user);
+        var day = date?.Date ?? DateTime.Today;
+        var events = await _eventService.GetDayAsync(user, day);
         return Ok(events);
     }
 
     [HttpGet("week")]
-    public async Task<IActionResult> GetRange([FromQuery] DateTime? start)
+    public async Task<IActionResult> GetWeekRange([FromQuery] DateTime? start)
     {
         var user = await GetUserAsync();
         if (user is null)
-        {
-            return NotFound("User not found");
-        }
+            return Unauthorized("User not found");
 
-        var startDate = start?.Date ?? DateTime.Today;
-        var events = await _eventService.GetRangeAsync(user, startDate);
+        var weekStart = start?.Date ?? DateTime.Today.StartOfWeek(DayOfWeek.Monday);
 
-        return Ok(events);
+        var result = await _eventService.GetWeekAsync(user, weekStart);
+
+        return Ok(result);
     }
 
     [HttpPost]
@@ -85,7 +84,7 @@ public class EventsController : ControllerBase
         }
         catch (KeyNotFoundException)
         {
-            return NotFound($"Event with id '{request.EventId}' was not found.");
+            return NotFound($"Event with id '{request.Id}' was not found.");
         }
         catch (ArgumentException ex)
         {

@@ -10,11 +10,22 @@ public record EventRequestDto(
 );
 
 public record UpdateEventRequestDto(
-    Guid EventId,
+    Guid Id,
     string Title,
     EventColor Color,
     DateTime Start,
     DateTime End
+);
+
+public record WeekEventsResponseDto(
+    DateTime WeekStart,
+    DateTime WeekEnd,
+    List<DayEventsDto> Days
+);
+
+public record DayEventsDto(
+    DateTime Date,
+    List<EventResponseDto> Events
 );
 
 public record EventResponseDto(

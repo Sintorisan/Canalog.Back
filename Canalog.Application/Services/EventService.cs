@@ -10,21 +10,42 @@ public class EventService(IEventRepository eventRepo) : IEventService
 {
     private readonly IEventRepository _eventRepo = eventRepo;
 
-    public async Task<IEnumerable<EventResponseDto>> GetTodayAsync(User user)
+    public async Task<DayEventsDto> GetDayAsync(User user, DateTime date)
     {
-        var start = DateTime.Today;
-        var end = start.AddDays(1);
+        date = date.Date;
+        var end = date.AddDays(1);
 
-        var events = await _eventRepo.GetEventsRangeAsync(user.Id, start, end);
-        return events.Select(e => e.MapToDto());
+        var events = await _eventRepo.GetEventsRangeAsync(user.Id, date, end);
+
+        return new DayEventsDto(
+            date,
+            events
+                .Select(e => e.MapToDto())
+                .ToList()
+            );
     }
 
-    public async Task<IEnumerable<EventResponseDto>> GetRangeAsync(User user, DateTime start)
+    public async Task<WeekEventsResponseDto> GetWeekAsync(User user, DateTime weekStart)
     {
-        var end = start.AddDays(7);
+        weekStart = weekStart.Date;
+        var weekEnd = weekStart.AddDays(7);
 
-        var events = await _eventRepo.GetEventsRangeAsync(user.Id, start, end);
-        return events.Select(e => e.MapToDto());
+        var events = await _eventRepo.GetEventsRangeAsync(user.Id, weekStart, weekEnd);
+
+        var days = events
+            .GroupBy(e => e.Start.Date)
+            .Select(g => new DayEventsDto(
+                Date: g.Key,
+                Events: g.Select(e => e.MapToDto()).ToList()
+            ))
+            .OrderBy(d => d.Date)
+            .ToList();
+
+        return new WeekEventsResponseDto(
+            weekStart,
+            weekEnd,
+            days
+        );
     }
 
     public async Task<EventResponseDto> CreateAsync(EventRequestDto request, User user)
@@ -55,7 +76,7 @@ public class EventService(IEventRepository eventRepo) : IEventService
 
     public async Task UpdateAsync(UpdateEventRequestDto dto)
     {
-        var entity = await _eventRepo.GetEventById(dto.EventId);
+        var entity = await _eventRepo.GetEventById(dto.Id);
         if (entity == null)
         {
             throw new KeyNotFoundException();
