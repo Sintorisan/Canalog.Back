@@ -11,5 +11,6 @@ public record OptionsResponseDto(
 public record ThemeResponseDto(
     string Name,
     string Background,
-    EventColorScheme ColorScheme
+    EventColorScheme ColorScheme,
+    UiColorScheme UiColorScheme
 );

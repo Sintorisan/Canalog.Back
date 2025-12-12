@@ -11,13 +11,18 @@ public class OptionsRepository(EventDbContext context) : IOptionsRepository
 
     public async Task<Theme?> GetDefaultTheme()
     {
-        const string defaultTheme = "default";
+        const string defaultTheme = "Silk Waves";
 
         return await _context.Themes
             .Include(t => t.UiColorScheme)
             .Include(t => t.EventColorScheme)
             .FirstOrDefaultAsync(t => t.Name == defaultTheme);
     }
+    public async Task<Theme?> GetAnyTheme()
+    {
+        return await _context.Themes.FirstOrDefaultAsync();
+    }
+
 
     public async Task<Theme?> GetThemeByIdAsync(Guid themeId)
     {

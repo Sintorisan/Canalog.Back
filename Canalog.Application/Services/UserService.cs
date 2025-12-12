@@ -42,9 +42,10 @@ public class UserService(IUserRepository userRepo, IOptionsRepository optRepo) :
     private async Task<Options> DefaultOptions(string userId)
     {
         var defaultTheme = await _optRepo.GetDefaultTheme();
-        if (defaultTheme == null)
+
+        if (defaultTheme is null)
         {
-            defaultTheme = new();
+            defaultTheme = await _optRepo.GetAnyTheme();
         }
 
         return new Options
@@ -67,7 +68,8 @@ public class UserService(IUserRepository userRepo, IOptionsRepository optRepo) :
             new ThemeResponseDto(
                 user.Options.Theme.Name,
                 user.Options.Theme.Background,
-                user.Options.Theme.EventColorScheme
+                user.Options.Theme.EventColorScheme,
+                user.Options.Theme.UiColorScheme
             )
         );
     }

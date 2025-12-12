@@ -9,9 +9,9 @@ public class Theme
     public string Background { get; set; } = string.Empty;
 
     public Guid UiColorSchemeId { get; set; }
-    public UiColorScheme UiColorScheme { get; set; } = new();
+    public UiColorScheme UiColorScheme { get; set; } = null!;
 
     public Guid EventColorSchemeId { get; set; }
-    public EventColorScheme EventColorScheme { get; set; } = new();
+    public EventColorScheme EventColorScheme { get; set; } = null!;
 }
 

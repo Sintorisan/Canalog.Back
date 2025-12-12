@@ -4,6 +4,7 @@ using Canalog.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Canalog.Infrastructure.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    partial class EventDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251212160925_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -420,11 +423,14 @@ namespace Canalog.Infrastructure.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ThemeId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Options");
                 });
@@ -461,7 +467,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("11111111-1111-4111-8111-111111111111"),
-                            Background = "src/assets/images/leafs.png",
+                            Background = "assets/images/leafs.png",
                             EventColorSchemeId = new Guid("11111111-eeee-4eee-8eee-111111111111"),
                             Name = "Leaf Forest",
                             UiColorSchemeId = new Guid("11111111-aaaa-4aaa-8aaa-111111111111")
@@ -469,7 +475,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("22222222-2222-4222-8222-222222222222"),
-                            Background = "src/assets/images/clouds.png",
+                            Background = "assets/images/clouds.png",
                             EventColorSchemeId = new Guid("22222222-ffff-4fff-8fff-222222222222"),
                             Name = "Pastel Clouds",
                             UiColorSchemeId = new Guid("22222222-bbbb-4bbb-8bbb-222222222222")
@@ -477,7 +483,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("33333333-3333-4333-8333-333333333333"),
-                            Background = "src/assets/images/color-burst.png",
+                            Background = "assets/images/color-burst.png",
                             EventColorSchemeId = new Guid("33333333-aaaa-4aaa-8aaa-333333333333"),
                             Name = "Color Burst",
                             UiColorSchemeId = new Guid("33333333-cccc-4ccc-8ccc-333333333333")
@@ -485,7 +491,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("44444444-4444-4444-8444-444444444444"),
-                            Background = "src/assets/images/deep-sea.png",
+                            Background = "assets/images/deep-sea.png",
                             EventColorSchemeId = new Guid("44444444-bbbb-4bbb-8bbb-444444444444"),
                             Name = "Deep Sea",
                             UiColorSchemeId = new Guid("44444444-dddd-4ddd-8ddd-444444444444")
@@ -493,7 +499,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("55555555-5555-4555-8555-555555555555"),
-                            Background = "src/assets/images/desert.png",
+                            Background = "assets/images/desert.png",
                             EventColorSchemeId = new Guid("55555555-cccc-4ccc-8ccc-555555555555"),
                             Name = "Desert Earth",
                             UiColorSchemeId = new Guid("55555555-eeee-4eee-8eee-555555555555")
@@ -501,7 +507,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("66666666-6666-4666-8666-666666666666"),
-                            Background = "src/assets/images/flame.png",
+                            Background = "assets/images/flame.png",
                             EventColorSchemeId = new Guid("66666666-dddd-4ddd-8ddd-666666666666"),
                             Name = "Molten Flame",
                             UiColorSchemeId = new Guid("66666666-ffff-4fff-8fff-666666666666")
@@ -509,7 +515,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("77777777-7777-4777-8777-777777777777"),
-                            Background = "src/assets/images/flowerpots.png",
+                            Background = "assets/images/flowerpots.png",
                             EventColorSchemeId = new Guid("77777777-eeee-4eee-8eee-777777777777"),
                             Name = "Indoor Jungle",
                             UiColorSchemeId = new Guid("77777777-aaaa-4aaa-8aaa-777777777777")
@@ -517,7 +523,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("88888888-8888-4888-8888-188888888888"),
-                            Background = "src/assets/images/micro.png",
+                            Background = "assets/images/micro.png",
                             EventColorSchemeId = new Guid("88888888-eeee-4eee-8eee-888888888222"),
                             Name = "Micro Cosmos",
                             UiColorSchemeId = new Guid("88888888-aaaa-4aaa-8aaa-888888888111")
@@ -525,7 +531,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("99999999-9999-4999-9999-199999999999"),
-                            Background = "src/assets/images/silk.png",
+                            Background = "assets/images/silk.png",
                             EventColorSchemeId = new Guid("99999999-ffff-4fff-8fff-999999999222"),
                             Name = "Silk Waves",
                             UiColorSchemeId = new Guid("99999999-bbbb-4bbb-8bbb-999999999111")
@@ -533,7 +539,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("aaaa0000-aaaa-4aaa-8aaa-a00000000000"),
-                            Background = "src/assets/images/swirl-art.png",
+                            Background = "assets/images/swirl-art.png",
                             EventColorSchemeId = new Guid("aaaa0000-dddd-4ddd-8ddd-a00000000022"),
                             Name = "Warm Swirl",
                             UiColorSchemeId = new Guid("aaaa0000-cccc-4ccc-8ccc-a00000000011")
@@ -541,7 +547,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("bbbb0000-bbbb-4bbb-8bbb-b00000000000"),
-                            Background = "src/assets/images/leaf.png",
+                            Background = "assets/images/leaf.png",
                             EventColorSchemeId = new Guid("bbbb0000-dddd-4ddd-8ddd-b00000000022"),
                             Name = "Deep Leaf",
                             UiColorSchemeId = new Guid("bbbb0000-cccc-4ccc-8ccc-b00000000011")
@@ -557,13 +563,7 @@ namespace Canalog.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("OptionsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("OptionsId")
-                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -587,7 +587,15 @@ namespace Canalog.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Canalog.Domain.User", "User")
+                        .WithOne("Options")
+                        .HasForeignKey("Canalog.Domain.Options", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Theme");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Canalog.Domain.Theme", b =>
@@ -611,23 +619,10 @@ namespace Canalog.Infrastructure.Migrations
 
             modelBuilder.Entity("Canalog.Domain.User", b =>
                 {
-                    b.HasOne("Canalog.Domain.Options", "Options")
-                        .WithOne("User")
-                        .HasForeignKey("Canalog.Domain.User", "OptionsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Options");
-                });
-
-            modelBuilder.Entity("Canalog.Domain.Options", b =>
-                {
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Canalog.Domain.User", b =>
-                {
                     b.Navigation("Events");
+
+                    b.Navigation("Options")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

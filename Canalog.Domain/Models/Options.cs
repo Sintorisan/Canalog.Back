@@ -8,7 +8,7 @@ public class Options
     public TimeFormat TimeFormat { get; set; }
 
     public Guid ThemeId { get; set; }
-    public Theme Theme { get; set; } = new();
+    public Theme Theme { get; set; } = null!;
 
     public string UserId { get; set; } = string.Empty;
     public User? User { get; set; }
