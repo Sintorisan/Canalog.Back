@@ -1,4 +1,4 @@
-﻿using Canalog.Application.Dtos;
+using Canalog.Application.Dtos;
 using Canalog.Application.Interfaces;
 using Canalog.Domain.Models;
 
@@ -18,9 +18,19 @@ public class OptionsService(IOptionsRepository optRepo) : IOptionsService
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync()
+    public async Task UpdateAsync(UpdateThemeRequestDto request, string userId)
     {
-        throw new NotImplementedException();
+        await _optRepo.UpdateUserThemeAsync(userId, request.ThemeId);
+    }
+
+    public async Task<List<ThemeListItemDto>> GetAllThemesAsync()
+    {
+        var themes = await _optRepo.GetAllThemesAsync();
+        return themes.Select(t => new ThemeListItemDto(
+            t.Id,
+            t.Name,
+            t.Background
+        )).ToList();
     }
 
 }

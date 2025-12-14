@@ -31,4 +31,26 @@ public class OptionsRepository(EventDbContext context) : IOptionsRepository
             .Include(t => t.EventColorScheme)
             .FirstOrDefaultAsync(t => t.Id == themeId);
     }
+
+    public async Task<List<Theme>> GetAllThemesAsync()
+    {
+        return await _context.Themes
+            .Include(t => t.UiColorScheme)
+            .Include(t => t.EventColorScheme)
+            .ToListAsync();
+    }
+
+    public async Task UpdateUserThemeAsync(string userId, Guid themeId)
+    {
+        var options = await _context.Options
+            .FirstOrDefaultAsync(o => o.UserId == userId);
+
+        if (options is null)
+        {
+            throw new InvalidOperationException($"Options not found for user {userId}");
+        }
+
+        options.ThemeId = themeId;
+        await _context.SaveChangesAsync();
+    }
 }

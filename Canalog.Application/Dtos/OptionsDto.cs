@@ -14,3 +14,13 @@ public record ThemeResponseDto(
     EventColorScheme ColorScheme,
     UiColorScheme UiColorScheme
 );
+
+public record ThemeListItemDto(
+    Guid Id,
+    string Name,
+    string Background
+);
+
+public record UpdateThemeRequestDto(
+    Guid ThemeId
+);
