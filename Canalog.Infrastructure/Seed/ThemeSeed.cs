@@ -52,159 +52,173 @@ public static class ThemeSeed
         // ================================
         // UI COLOR SCHEMES
         // ================================
-        modelBuilder.Entity<UiColorScheme>().HasData(
-            new UiColorScheme { Id = uiLeafId, BackgroundColor = "#C7D9C5", TextPrimary = "#1E3A1F", TextSecondary = "#4A6B4C", ClockHandSecondary = "#2F5A30", TickPrimary = "#2C4C2D", TickSecondary = "#7EA884", GlassHighlight = "rgba(255,255,255,0.35)", GlassShadow = "rgba(20,40,20,0.35)", CenterFill = "#2E4A2F", CenterStroke = "#1B331C", Accent = "#88B48D" },
-            new UiColorScheme
-            {
-                Id = uiCloudId,
-                BackgroundColor = "#F3EAF7",
-                TextPrimary = "#5A4D7A",
-                TextSecondary = "#A28CC2",
-                ClockHandSecondary = "#7B6CA8",
-                TickPrimary = "#6A5E93",
-                TickSecondary = "#B8A7D6",
-                GlassHighlight = "rgba(255,255,255,0.50)",
-                GlassShadow = "rgba(120,100,160,0.28)",
-                CenterFill = "#7E6FB6",
-                CenterStroke = "#5C4A92",
-                Accent = "#F4B2C7"
-            },
-            new UiColorScheme
-            {
-                Id = uiBurstId,
-                BackgroundColor = "#1A1A26",
-                TextPrimary = "#FFFFFF",
-                TextSecondary = "#D2D2D2",
-                ClockHandSecondary = "#FFD766",
-                TickPrimary = "#FFFFFF",
-                TickSecondary = "#A1A1A1",
-                GlassHighlight = "rgba(255,255,255,0.25)",
-                GlassShadow = "rgba(0,0,0,0.45)",
-                CenterFill = "#FFD766",
-                CenterStroke = "#CCAA44",
-                Accent = "#FF4BC2"
-            },
-            new UiColorScheme
-            {
-                Id = uiSeaId,
-                BackgroundColor = "#0E1B1A",
-                TextPrimary = "#CFFDFE",
-                TextSecondary = "#8ED3D9",
-                ClockHandSecondary = "#68C8C8",
-                TickPrimary = "#C8F4F4",
-                TickSecondary = "#6ABEBE",
-                GlassHighlight = "rgba(255,255,255,0.20)",
-                GlassShadow = "rgba(0,0,0,0.55)",
-                CenterFill = "#0D4F4F",
-                CenterStroke = "#0B3636",
-                Accent = "#7FE5DB"
-            },
-            new UiColorScheme
-            {
-                Id = uiDesertId,
-                BackgroundColor = "#E3C9A8",
-                TextPrimary = "#4E3A28",
-                TextSecondary = "#8E745D",
-                ClockHandSecondary = "#A07852",
-                TickPrimary = "#4E3A28",
-                TickSecondary = "#A88C6E",
-                GlassHighlight = "rgba(255,255,255,0.22)",
-                GlassShadow = "rgba(60,40,20,0.35)",
-                CenterFill = "#8E6B48",
-                CenterStroke = "#5B4029",
-                Accent = "#CBA76F"
-            },
-            new UiColorScheme
-            {
-                Id = uiFlameId,
-                BackgroundColor = "#1A0000",
-                TextPrimary = "#FFDADA",
-                TextSecondary = "#EBA0A0",
-                ClockHandSecondary = "#FF4545",
-                TickPrimary = "#FFE0E0",
-                TickSecondary = "#FF9C9C",
-                GlassHighlight = "rgba(255,255,255,0.20)",
-                GlassShadow = "rgba(255,0,0,0.35)",
-                CenterFill = "#FF1A1A",
-                CenterStroke = "#B30000",
-                Accent = "#FF6A4A"
-            },
-            new UiColorScheme
-            {
-                Id = uiJungleId,
-                BackgroundColor = "#F3EDE3",
-                TextPrimary = "#2F503C",
-                TextSecondary = "#6A8F77",
-                ClockHandSecondary = "#4FA781",
-                TickPrimary = "#2F503C",
-                TickSecondary = "#90B8A0",
-                GlassHighlight = "rgba(255,255,255,0.35)",
-                GlassShadow = "rgba(40,70,50,0.25)",
-                CenterFill = "#3C6A50",
-                CenterStroke = "#244434",
-                Accent = "#53C49A"
-            },
-            new UiColorScheme
-            {
-                Id = uiMicroId,
-                BackgroundColor = "#0A1C25",
-                TextPrimary = "#E6F7FF",
-                TextSecondary = "#9AC6D9",
-                ClockHandSecondary = "#57D5FF",
-                TickPrimary = "#D6F3FF",
-                TickSecondary = "#7ECDE4",
-                GlassHighlight = "rgba(255,255,255,0.25)",
-                GlassShadow = "rgba(0,0,0,0.55)",
-                CenterFill = "#FFB75E",
-                CenterStroke = "#CC8E3C",
-                Accent = "#FF7DE3"
-            },
-            new UiColorScheme
-            {
-                Id = uiSilkId,
-                BackgroundColor = "#0D0A24",
-                TextPrimary = "#ECE6FF",
-                TextSecondary = "#B8A9E6",
-                ClockHandSecondary = "#A883FF",
-                TickPrimary = "#EFE8FF",
-                TickSecondary = "#B9A4FF",
-                GlassHighlight = "rgba(255,255,255,0.22)",
-                GlassShadow = "rgba(40,0,80,0.45)",
-                CenterFill = "#7C4BFF",
-                CenterStroke = "#4E2BBF",
-                Accent = "#CB8FFF"
-            },
-            new UiColorScheme
-            {
-                Id = uiSwirlId,
-                BackgroundColor = "#F2D27A",
-                TextPrimary = "#4B2A24",
-                TextSecondary = "#7F4A3E",
-                ClockHandSecondary = "#B03C2E",
-                TickPrimary = "#4B2A24",
-                TickSecondary = "#D9A563",
-                GlassHighlight = "rgba(255,255,255,0.32)",
-                GlassShadow = "rgba(100,50,20,0.35)",
-                CenterFill = "#C24F33",
-                CenterStroke = "#8C3A24",
-                Accent = "#E86F1A"
-            },
-            new UiColorScheme
-            {
-                Id = uiDeepLeafId,
-                BackgroundColor = "#0A1F0E",
-                TextPrimary = "#CFFFE1",
-                TextSecondary = "#86D9A8",
-                ClockHandSecondary = "#4EC47E",
-                TickPrimary = "#CFFFE1",
-                TickSecondary = "#89D2A2",
-                GlassHighlight = "rgba(255,255,255,0.20)",
-                GlassShadow = "rgba(0,40,10,0.40)",
-                CenterFill = "#1D5E32",
-                CenterStroke = "#123D21",
-                Accent = "#59EBA4"
-            }
-        );
+modelBuilder.Entity<UiColorScheme>().HasData(
+    new UiColorScheme {
+        Id = uiLeafId,
+        BackgroundColor = "#C7D9C5",
+        TextPrimary = "#1E3A1F",
+        TextSecondary = "#4A6B4C",
+        ClockHandPrimary = "#1E3A1F",       // deep forest green for readability
+        ClockHandSecondary = "#2F5A30",
+        TickPrimary = "#2C4C2D",
+        TickSecondary = "#7EA884",
+        GlassHighlight = "rgba(255,255,255,0.35)",
+        GlassShadow = "rgba(20,40,20,0.35)",
+        CenterFill = "#2E4A2F",
+        CenterStroke = "#1B331C",
+        Accent = "#88B48D"
+    },
+    new UiColorScheme {
+        Id = uiCloudId,
+        BackgroundColor = "#F3EAF7",
+        TextPrimary = "#5A4D7A",
+        TextSecondary = "#A28CC2",
+        ClockHandPrimary = "#5A4D7A",       // dark muted purple for contrast
+        ClockHandSecondary = "#7B6CA8",
+        TickPrimary = "#6A5E93",
+        TickSecondary = "#B8A7D6",
+        GlassHighlight = "rgba(255,255,255,0.50)",
+        GlassShadow = "rgba(120,100,160,0.28)",
+        CenterFill = "#7E6FB6",
+        CenterStroke = "#5C4A92",
+        Accent = "#F4B2C7"
+    },
+    new UiColorScheme {
+        Id = uiBurstId,
+        BackgroundColor = "#1A1A26",
+        TextPrimary = "#FFFFFF",
+        TextSecondary = "#D2D2D2",
+        ClockHandPrimary = "#FF4BC2",       // strong neon pink accent
+        ClockHandSecondary = "#FFD766",
+        TickPrimary = "#FFFFFF",
+        TickSecondary = "#A1A1A1",
+        GlassHighlight = "rgba(255,255,255,0.25)",
+        GlassShadow = "rgba(0,0,0,0.45)",
+        CenterFill = "#FFD766",
+        CenterStroke = "#CCAA44",
+        Accent = "#FF4BC2"
+    },
+    new UiColorScheme {
+        Id = uiSeaId,
+        BackgroundColor = "#0E1B1A",
+        TextPrimary = "#CFFDFE",
+        TextSecondary = "#8ED3D9",
+        ClockHandPrimary = "#CFFDFE",       // icy bright cyan stands out strongly
+        ClockHandSecondary = "#68C8C8",
+        TickPrimary = "#C8F4F4",
+        TickSecondary = "#6ABEBE",
+        GlassHighlight = "rgba(255,255,255,0.20)",
+        GlassShadow = "rgba(0,0,0,0.55)",
+        CenterFill = "#0D4F4F",
+        CenterStroke = "#0B3636",
+        Accent = "#7FE5DB"
+    },
+    new UiColorScheme {
+        Id = uiDesertId,
+        BackgroundColor = "#E3C9A8",
+        TextPrimary = "#4E3A28",
+        TextSecondary = "#8E745D",
+        ClockHandPrimary = "#4E3A28",        // deep brown, high contrast
+        ClockHandSecondary = "#A07852",
+        TickPrimary = "#4E3A28",
+        TickSecondary = "#A88C6E",
+        GlassHighlight = "rgba(255,255,255,0.22)",
+        GlassShadow = "rgba(60,40,20,0.35)",
+        CenterFill = "#8E6B48",
+        CenterStroke = "#5B4029",
+        Accent = "#CBA76F"
+    },
+    new UiColorScheme {
+        Id = uiFlameId,
+        BackgroundColor = "#1A0000",
+        TextPrimary = "#FFDADA",
+        TextSecondary = "#EBA0A0",
+        ClockHandPrimary = "#FF6A4A",       // hot orange-red accent
+        ClockHandSecondary = "#FF4545",
+        TickPrimary = "#FFE0E0",
+        TickSecondary = "#FF9C9C",
+        GlassHighlight = "rgba(255,255,255,0.20)",
+        GlassShadow = "rgba(255,0,0,0.35)",
+        CenterFill = "#FF1A1A",
+        CenterStroke = "#B30000",
+        Accent = "#FF6A4A"
+    },
+    new UiColorScheme {
+        Id = uiJungleId,
+        BackgroundColor = "#F3EDE3",
+        TextPrimary = "#2F503C",
+        TextSecondary = "#6A8F77",
+        ClockHandPrimary = "#2F503C",       // deep jungle green
+        ClockHandSecondary = "#4FA781",
+        TickPrimary = "#2F503C",
+        TickSecondary = "#90B8A0",
+        GlassHighlight = "rgba(255,255,255,0.35)",
+        GlassShadow = "rgba(40,70,50,0.25)",
+        CenterFill = "#3C6A50",
+        CenterStroke = "#244434",
+        Accent = "#53C49A"
+    },
+    new UiColorScheme {
+        Id = uiMicroId,
+        BackgroundColor = "#0A1C25",
+        TextPrimary = "#E6F7FF",
+        TextSecondary = "#9AC6D9",
+        ClockHandPrimary = "#57D5FF",       // bright electric cyan
+        ClockHandSecondary = "#57D5FF",
+        TickPrimary = "#D6F3FF",
+        TickSecondary = "#7ECDE4",
+        GlassHighlight = "rgba(255,255,255,0.25)",
+        GlassShadow = "rgba(0,0,0,0.55)",
+        CenterFill = "#FFB75E",
+        CenterStroke = "#CC8E3C",
+        Accent = "#FF7DE3"
+    },
+    new UiColorScheme {
+        Id = uiSilkId,
+        BackgroundColor = "#0D0A24",
+        TextPrimary = "#ECE6FF",
+        TextSecondary = "#B8A9E6",
+        ClockHandPrimary = "#ECE6FF",       // soft but bright lavender
+        ClockHandSecondary = "#A883FF",
+        TickPrimary = "#EFE8FF",
+        TickSecondary = "#B9A4FF",
+        GlassHighlight = "rgba(255,255,255,0.22)",
+        GlassShadow = "rgba(40,0,80,0.45)",
+        CenterFill = "#7C4BFF",
+        CenterStroke = "#4E2BBF",
+        Accent = "#CB8FFF"
+    },
+    new UiColorScheme {
+        Id = uiSwirlId,
+        BackgroundColor = "#F2D27A",
+        TextPrimary = "#4B2A24",
+        TextSecondary = "#7F4A3E",
+        ClockHandPrimary = "#4B2A24",       // rich earthy brown
+        ClockHandSecondary = "#B03C2E",
+        TickPrimary = "#4B2A24",
+        TickSecondary = "#D9A563",
+        GlassHighlight = "rgba(255,255,255,0.32)",
+        GlassShadow = "rgba(100,50,20,0.35)",
+        CenterFill = "#C24F33",
+        CenterStroke = "#8C3A24",
+        Accent = "#E86F1A"
+    },
+    new UiColorScheme {
+        Id = uiDeepLeafId,
+        BackgroundColor = "#0A1F0E",
+        TextPrimary = "#CFFFE1",
+        TextSecondary = "#86D9A8",
+        ClockHandPrimary = "#CFFFE1",       // glowing mint green
+        ClockHandSecondary = "#4EC47E",
+        TickPrimary = "#CFFFE1",
+        TickSecondary = "#89D2A2",
+        GlassHighlight = "rgba(255,255,255,0.20)",
+        GlassShadow = "rgba(0,40,10,0.40)",
+        CenterFill = "#1D5E32",
+        CenterStroke = "#123D21",
+        Accent = "#59EBA4"
+    }
+);
 
         // ================================
         // EVENT COLOR SCHEMES

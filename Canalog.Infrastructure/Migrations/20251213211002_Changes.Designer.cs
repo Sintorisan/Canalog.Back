@@ -4,6 +4,7 @@ using Canalog.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Canalog.Infrastructure.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    partial class EventDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251213211002_Changes")]
+    partial class Changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,10 +209,6 @@ namespace Canalog.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClockHandPrimary")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ClockHandSecondary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -250,7 +249,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#C7D9C5",
                             CenterFill = "#2E4A2F",
                             CenterStroke = "#1B331C",
-                            ClockHandPrimary = "#1E3A1F",
                             ClockHandSecondary = "#2F5A30",
                             GlassHighlight = "rgba(255,255,255,0.35)",
                             GlassShadow = "rgba(20,40,20,0.35)",
@@ -266,7 +264,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#F3EAF7",
                             CenterFill = "#7E6FB6",
                             CenterStroke = "#5C4A92",
-                            ClockHandPrimary = "#5A4D7A",
                             ClockHandSecondary = "#7B6CA8",
                             GlassHighlight = "rgba(255,255,255,0.50)",
                             GlassShadow = "rgba(120,100,160,0.28)",
@@ -282,7 +279,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#1A1A26",
                             CenterFill = "#FFD766",
                             CenterStroke = "#CCAA44",
-                            ClockHandPrimary = "#FF4BC2",
                             ClockHandSecondary = "#FFD766",
                             GlassHighlight = "rgba(255,255,255,0.25)",
                             GlassShadow = "rgba(0,0,0,0.45)",
@@ -298,7 +294,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#0E1B1A",
                             CenterFill = "#0D4F4F",
                             CenterStroke = "#0B3636",
-                            ClockHandPrimary = "#CFFDFE",
                             ClockHandSecondary = "#68C8C8",
                             GlassHighlight = "rgba(255,255,255,0.20)",
                             GlassShadow = "rgba(0,0,0,0.55)",
@@ -314,7 +309,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#E3C9A8",
                             CenterFill = "#8E6B48",
                             CenterStroke = "#5B4029",
-                            ClockHandPrimary = "#4E3A28",
                             ClockHandSecondary = "#A07852",
                             GlassHighlight = "rgba(255,255,255,0.22)",
                             GlassShadow = "rgba(60,40,20,0.35)",
@@ -330,7 +324,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#1A0000",
                             CenterFill = "#FF1A1A",
                             CenterStroke = "#B30000",
-                            ClockHandPrimary = "#FF6A4A",
                             ClockHandSecondary = "#FF4545",
                             GlassHighlight = "rgba(255,255,255,0.20)",
                             GlassShadow = "rgba(255,0,0,0.35)",
@@ -346,7 +339,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#F3EDE3",
                             CenterFill = "#3C6A50",
                             CenterStroke = "#244434",
-                            ClockHandPrimary = "#2F503C",
                             ClockHandSecondary = "#4FA781",
                             GlassHighlight = "rgba(255,255,255,0.35)",
                             GlassShadow = "rgba(40,70,50,0.25)",
@@ -362,7 +354,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#0A1C25",
                             CenterFill = "#FFB75E",
                             CenterStroke = "#CC8E3C",
-                            ClockHandPrimary = "#57D5FF",
                             ClockHandSecondary = "#57D5FF",
                             GlassHighlight = "rgba(255,255,255,0.25)",
                             GlassShadow = "rgba(0,0,0,0.55)",
@@ -378,7 +369,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#0D0A24",
                             CenterFill = "#7C4BFF",
                             CenterStroke = "#4E2BBF",
-                            ClockHandPrimary = "#ECE6FF",
                             ClockHandSecondary = "#A883FF",
                             GlassHighlight = "rgba(255,255,255,0.22)",
                             GlassShadow = "rgba(40,0,80,0.45)",
@@ -394,7 +384,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#F2D27A",
                             CenterFill = "#C24F33",
                             CenterStroke = "#8C3A24",
-                            ClockHandPrimary = "#4B2A24",
                             ClockHandSecondary = "#B03C2E",
                             GlassHighlight = "rgba(255,255,255,0.32)",
                             GlassShadow = "rgba(100,50,20,0.35)",
@@ -410,7 +399,6 @@ namespace Canalog.Infrastructure.Migrations
                             BackgroundColor = "#0A1F0E",
                             CenterFill = "#1D5E32",
                             CenterStroke = "#123D21",
-                            ClockHandPrimary = "#CFFFE1",
                             ClockHandSecondary = "#4EC47E",
                             GlassHighlight = "rgba(255,255,255,0.20)",
                             GlassShadow = "rgba(0,40,10,0.40)",
