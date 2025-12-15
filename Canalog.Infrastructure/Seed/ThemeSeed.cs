@@ -48,12 +48,56 @@ public static class ThemeSeed
         var evtSwirlId = Guid.Parse("AAAA0000-DDDD-4DDD-8DDD-A00000000022");
         var evtDeepLeafId = Guid.Parse("BBBB0000-DDDD-4DDD-8DDD-B00000000022");
 
+        var lightModeId = Guid.Parse("CCCC0000-1111-4111-8111-000000000001");
+        var darkModeId = Guid.Parse("DDDD0000-2222-4222-8222-000000000002");
+
+        var uiLightModeId = Guid.Parse("CCCC0000-AAAA-4AAA-8AAA-000000000011");
+        var uiDarkModeId = Guid.Parse("DDDD0000-BBBB-4BBB-8BBB-000000000022");
+
+        var evtLightModeId = Guid.Parse("CCCC0000-EEEE-4EEE-8EEE-000000000111");
+        var evtDarkModeId = Guid.Parse("DDDD0000-FFFF-4FFF-8FFF-000000000222");
+
+
 
         // ================================
         // UI COLOR SCHEMES
         // ================================
-modelBuilder.Entity<UiColorScheme>().HasData(
-    new UiColorScheme {
+        modelBuilder.Entity<UiColorScheme>().HasData(
+            new UiColorScheme
+            {
+                Id = uiLightModeId,
+                BackgroundColor = "#FFFFFF",
+                TextPrimary = "#1A1A1A",
+                TextSecondary = "#5F6368",
+                ClockHandPrimary = "#1A1A1A",
+                ClockHandSecondary = "#5F6368",
+                TickPrimary = "#1A1A1A",
+                TickSecondary = "#C7C7C7",
+                GlassHighlight = "rgba(255,255,255,0.85)",
+                GlassShadow = "rgba(0,0,0,0.12)",
+                CenterFill = "#FFFFFF",
+                CenterStroke = "#1A1A1A",
+                Accent = "#3B82F6" // calm blue
+            },
+            new UiColorScheme
+            {
+                Id = uiDarkModeId,
+                BackgroundColor = "#0F1115",
+                TextPrimary = "#EDEDED",
+                TextSecondary = "#9AA0A6",
+                ClockHandPrimary = "#EDEDED",
+                ClockHandSecondary = "#9AA0A6",
+                TickPrimary = "#EDEDED",
+                TickSecondary = "#3A3F45",
+                GlassHighlight = "rgba(255,255,255,0.10)",
+                GlassShadow = "rgba(0,0,0,0.65)",
+                CenterFill = "#0F1115",
+                CenterStroke = "#EDEDED",
+                Accent = "#22D3EE" // subtle cyan
+            },
+
+    new UiColorScheme
+    {
         Id = uiLeafId,
         BackgroundColor = "#C7D9C5",
         TextPrimary = "#1E3A1F",
@@ -68,7 +112,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#1B331C",
         Accent = "#88B48D"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiCloudId,
         BackgroundColor = "#F3EAF7",
         TextPrimary = "#5A4D7A",
@@ -83,7 +128,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#5C4A92",
         Accent = "#F4B2C7"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiBurstId,
         BackgroundColor = "#1A1A26",
         TextPrimary = "#FFFFFF",
@@ -98,7 +144,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#CCAA44",
         Accent = "#FF4BC2"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiSeaId,
         BackgroundColor = "#0E1B1A",
         TextPrimary = "#CFFDFE",
@@ -113,7 +160,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#0B3636",
         Accent = "#7FE5DB"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiDesertId,
         BackgroundColor = "#E3C9A8",
         TextPrimary = "#4E3A28",
@@ -128,7 +176,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#5B4029",
         Accent = "#CBA76F"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiFlameId,
         BackgroundColor = "#1A0000",
         TextPrimary = "#FFDADA",
@@ -143,7 +192,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#B30000",
         Accent = "#FF6A4A"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiJungleId,
         BackgroundColor = "#F3EDE3",
         TextPrimary = "#2F503C",
@@ -158,7 +208,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#244434",
         Accent = "#53C49A"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiMicroId,
         BackgroundColor = "#0A1C25",
         TextPrimary = "#E6F7FF",
@@ -173,7 +224,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#CC8E3C",
         Accent = "#FF7DE3"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiSilkId,
         BackgroundColor = "#0D0A24",
         TextPrimary = "#ECE6FF",
@@ -188,7 +240,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#4E2BBF",
         Accent = "#CB8FFF"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiSwirlId,
         BackgroundColor = "#F2D27A",
         TextPrimary = "#4B2A24",
@@ -203,7 +256,8 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         CenterStroke = "#8C3A24",
         Accent = "#E86F1A"
     },
-    new UiColorScheme {
+    new UiColorScheme
+    {
         Id = uiDeepLeafId,
         BackgroundColor = "#0A1F0E",
         TextPrimary = "#CFFFE1",
@@ -224,6 +278,25 @@ modelBuilder.Entity<UiColorScheme>().HasData(
         // EVENT COLOR SCHEMES
         // ================================
         modelBuilder.Entity<EventColorScheme>().HasData(
+            new EventColorScheme
+            {
+                Id = evtLightModeId,
+                Red = "#EF4444",
+                Blue = "#3B82F6",
+                Green = "#22C55E",
+                Yellow = "#EAB308",
+                Purple = "#8B5CF6"
+            },
+new EventColorScheme
+{
+    Id = evtDarkModeId,
+    Red = "#F87171",
+    Blue = "#60A5FA",
+    Green = "#4ADE80",
+    Yellow = "#FACC15",
+    Purple = "#A78BFA"
+}
+,
             new EventColorScheme { Id = evtLeafId, Red = "#A24444", Blue = "#3E6E95", Green = "#4C9A53", Yellow = "#C7B66D", Purple = "#6A4E82" },
             new EventColorScheme { Id = evtCloudId, Red = "#E09AA7", Blue = "#9EB7F3", Green = "#A8E6C6", Yellow = "#F7E7A5", Purple = "#C39AED" },
             new EventColorScheme { Id = evtBurstId, Red = "#FF3366", Blue = "#00C8F0", Green = "#2DE07B", Yellow = "#FFD739", Purple = "#B24CFF" },
@@ -251,7 +324,24 @@ modelBuilder.Entity<UiColorScheme>().HasData(
             new Theme { Id = microId, Name = "Micro Cosmos", Background = "src/assets/images/micro.png", UiColorSchemeId = uiMicroId, EventColorSchemeId = evtMicroId },
             new Theme { Id = silkId, Name = "Silk Waves", Background = "src/assets/images/silk.png", UiColorSchemeId = uiSilkId, EventColorSchemeId = evtSilkId },
             new Theme { Id = swirlId, Name = "Warm Swirl", Background = "src/assets/images/swirl-art.png", UiColorSchemeId = uiSwirlId, EventColorSchemeId = evtSwirlId },
-            new Theme { Id = deepLeafId, Name = "Deep Leaf", Background = "src/assets/images/leaf.png", UiColorSchemeId = uiDeepLeafId, EventColorSchemeId = evtDeepLeafId }
+            new Theme { Id = deepLeafId, Name = "Deep Leaf", Background = "src/assets/images/leaf.png", UiColorSchemeId = uiDeepLeafId, EventColorSchemeId = evtDeepLeafId },
+            new Theme
+            {
+                Id = lightModeId,
+                Name = "Light Mode",
+                Background = "src/assets/images/light-mode.png",
+                UiColorSchemeId = uiLightModeId,
+                EventColorSchemeId = evtLightModeId
+            },
+new Theme
+{
+    Id = darkModeId,
+    Name = "Dark Mode",
+    Background = "src/assets/images/dark-mode.png",
+    UiColorSchemeId = uiDarkModeId,
+    EventColorSchemeId = evtDarkModeId
+}
+
         );
     }
 }

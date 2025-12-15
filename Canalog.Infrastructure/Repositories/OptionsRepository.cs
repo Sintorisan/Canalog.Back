@@ -11,7 +11,7 @@ public class OptionsRepository(EventDbContext context) : IOptionsRepository
 
     public async Task<Theme?> GetDefaultTheme()
     {
-        const string defaultTheme = "Silk Waves";
+        const string defaultTheme = "Dark Mode";
 
         return await _context.Themes
             .Include(t => t.UiColorScheme)

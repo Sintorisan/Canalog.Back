@@ -4,6 +4,7 @@ using Canalog.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Canalog.Infrastructure.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    partial class EventDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251215213333_NewThemesAddedToSeed")]
+    partial class NewThemesAddedToSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -614,7 +617,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("cccc0000-1111-4111-8111-000000000001"),
-                            Background = "src/assets/images/light-mode.png",
+                            Background = "",
                             EventColorSchemeId = new Guid("cccc0000-eeee-4eee-8eee-000000000111"),
                             Name = "Light Mode",
                             UiColorSchemeId = new Guid("cccc0000-aaaa-4aaa-8aaa-000000000011")
@@ -622,7 +625,7 @@ namespace Canalog.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("dddd0000-2222-4222-8222-000000000002"),
-                            Background = "src/assets/images/dark-mode.png",
+                            Background = "",
                             EventColorSchemeId = new Guid("dddd0000-ffff-4fff-8fff-000000000222"),
                             Name = "Dark Mode",
                             UiColorSchemeId = new Guid("dddd0000-bbbb-4bbb-8bbb-000000000022")
