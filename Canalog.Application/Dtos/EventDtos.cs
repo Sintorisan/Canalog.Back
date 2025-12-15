@@ -5,33 +5,33 @@ namespace Canalog.Application.Dtos;
 public record EventRequestDto(
     string Title,
     EventColor Color,
-    DateTime Start,
-    DateTime End
+    DateTimeOffset Start,
+    DateTimeOffset End
 );
 
 public record UpdateEventRequestDto(
     Guid Id,
     string Title,
     EventColor Color,
-    DateTime Start,
-    DateTime End
+    DateTimeOffset Start,
+    DateTimeOffset End
 );
 
 public record WeekEventsResponseDto(
-    DateTime WeekStart,
-    DateTime WeekEnd,
+    DateTimeOffset WeekStart,
+    DateTimeOffset WeekEnd,
     List<DayEventsDto> Days
 );
 
 public record DayEventsDto(
-    DateTime Date,
+    DateTimeOffset Date,
     List<EventResponseDto> Events
 );
 
 public record EventResponseDto(
     Guid Id,
     string Title,
-    DateTime Start,
-    DateTime End,
+    DateTimeOffset Start,
+    DateTimeOffset End,
     EventColor Color
 );

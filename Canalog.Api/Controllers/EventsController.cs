@@ -24,26 +24,27 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet("day")]
-    public async Task<IActionResult> GetDay([FromQuery] DateTime? date)
+    public async Task<IActionResult> GetDay([FromQuery] DateTimeOffset? date)
     {
         var user = await GetUserAsync();
         if (user is null)
         {
             return Unauthorized("User not found");
         }
-        var day = date?.Date ?? DateTime.Today;
+        var day = date ?? DateTimeOffset.Now;
         var events = await _eventService.GetDayAsync(user, day);
         return Ok(events);
     }
 
     [HttpGet("week")]
-    public async Task<IActionResult> GetWeekRange([FromQuery] DateTime? start)
+    public async Task<IActionResult> GetWeekRange([FromQuery] DateTimeOffset? start)
     {
         var user = await GetUserAsync();
         if (user is null)
             return Unauthorized("User not found");
 
-        var weekStart = start?.Date ?? DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+        var weekStart = start ?? DateTimeOffset.Now;
+        weekStart = weekStart.StartOfWeek(DayOfWeek.Monday);
 
         var result = await _eventService.GetWeekAsync(user, weekStart);
 

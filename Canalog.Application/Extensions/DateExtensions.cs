@@ -1,8 +1,9 @@
 public static class DateExtensions
 {
-    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
+    public static DateTimeOffset StartOfWeek(this DateTimeOffset dt, DayOfWeek startOfWeek)
     {
         int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
-        return dt.AddDays(-1 * diff).Date;
+        var result = dt.AddDays(-1 * diff);
+        return new DateTimeOffset(result.Date, result.Offset);
     }
 }

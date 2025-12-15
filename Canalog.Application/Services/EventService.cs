@@ -1,4 +1,4 @@
-﻿using Canalog.Application.Dtos;
+using Canalog.Application.Dtos;
 using Canalog.Application.Interfaces;
 using Canalog.Application.Mappers;
 using Canalog.Domain;
@@ -10,30 +10,30 @@ public class EventService(IEventRepository eventRepo) : IEventService
 {
     private readonly IEventRepository _eventRepo = eventRepo;
 
-    public async Task<DayEventsDto> GetDayAsync(User user, DateTime date)
+    public async Task<DayEventsDto> GetDayAsync(User user, DateTimeOffset date)
     {
-        date = date.Date;
-        var end = date.AddDays(1);
+        var dateStart = new DateTimeOffset(date.Date, date.Offset);
+        var end = dateStart.AddDays(1);
 
-        var events = await _eventRepo.GetEventsRangeAsync(user.Id, date, end);
+        var events = await _eventRepo.GetEventsRangeAsync(user.Id, dateStart, end);
 
         return new DayEventsDto(
-            date,
+            dateStart,
             events
                 .Select(e => e.MapToDto())
                 .ToList()
             );
     }
 
-    public async Task<WeekEventsResponseDto> GetWeekAsync(User user, DateTime weekStart)
+    public async Task<WeekEventsResponseDto> GetWeekAsync(User user, DateTimeOffset weekStart)
     {
-        weekStart = weekStart.Date;
-        var weekEnd = weekStart.AddDays(7);
+        var weekStartDate = new DateTimeOffset(weekStart.Date, weekStart.Offset);
+        var weekEnd = weekStartDate.AddDays(7);
 
-        var events = await _eventRepo.GetEventsRangeAsync(user.Id, weekStart, weekEnd);
+        var events = await _eventRepo.GetEventsRangeAsync(user.Id, weekStartDate, weekEnd);
 
         var days = events
-            .GroupBy(e => e.Start.Date)
+            .GroupBy(e => new DateTimeOffset(e.Start.Date, e.Start.Offset))
             .Select(g => new DayEventsDto(
                 Date: g.Key,
                 Events: g.Select(e => e.MapToDto()).ToList()
@@ -42,7 +42,7 @@ public class EventService(IEventRepository eventRepo) : IEventService
             .ToList();
 
         return new WeekEventsResponseDto(
-            weekStart,
+            weekStartDate,
             weekEnd,
             days
         );

@@ -27,7 +27,7 @@ public class EventRepository(EventDbContext context) : IEventRepository
             .FirstOrDefaultAsync(e => e.Id == eventId);
     }
 
-    public async Task<IEnumerable<Event>> GetEventsRangeAsync(string userId, DateTime start, DateTime end)
+    public async Task<IEnumerable<Event>> GetEventsRangeAsync(string userId, DateTimeOffset start, DateTimeOffset end)
     {
         return await _context.Events
             .Where(e =>
